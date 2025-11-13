@@ -94,4 +94,7 @@ def handle_protected():
 
     user = User.query.get(current_user_id)
 
+    if user is None:
+         return jsonify({"Error": "User not found"})
+
     return jsonify({"id": user.id, "email": user.email }), 200
